@@ -45,11 +45,9 @@ public class MainPageTest {
     public void checkScenarioTwo() {
         mainPage.clickOnDressesThroughHover("Evening");
         mainPage.getPrintedDressInformation();
-        driver.findElement(By.xpath("//*[@id=\"group_1\"]")).click();
-        driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[2]")).click();
-        driver.findElement(By.xpath("//a[@name=\"Pink\"]")).click();
-        driver.findElement(By.xpath("//*[@id=\"add_to_cart\"]/button/span")).click();
-        driver.findElement(By.xpath("//*[@id=\"layer_cart\"]//span[@title=\"Continue shopping\"]/span")).click();
+        mainPage.selectDressSize("M");
+        mainPage.selectDressColor("Pink");
+        mainPage.clickAddToCartButtonAndContinueShopping();
 
         String Quantity = driver.findElement(By.xpath("//span[@class=\"ajax_cart_quantity unvisible\"]")).getText();
 
@@ -60,11 +58,9 @@ public class MainPageTest {
     public void checkScenarioThree() {
         mainPage.clickOnDressesThroughHover("Evening");
         mainPage.getPrintedDressInformation();
-        driver.findElement(By.xpath("//*[@id=\"group_1\"]")).click();
-        driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[2]")).click();
-        driver.findElement(By.xpath("//a[@name=\"Pink\"]")).click();
-        driver.findElement(By.xpath("//*[@id=\"add_to_cart\"]/button/span")).click();
-        driver.findElement(By.xpath("//*[@id=\"layer_cart\"]//span[@title=\"Continue shopping\"]/span")).click();
+        mainPage.selectDressSize("M");
+        mainPage.selectDressColor("Pink");
+        mainPage.clickAddToCartButtonAndContinueShopping();
         mainPage.openCheckout();
         mainPage.deleteItemFromCheckout("1");
 

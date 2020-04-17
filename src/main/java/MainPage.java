@@ -11,6 +11,8 @@ public class MainPage {
     private By dressesButton = By.xpath("//*[@id=\"block_top_menu\"]/ul/li[2]/a[text()='Dresses']");
     private By printedDress = By.xpath("//div[@class='product-image-container']/a[1]");
     private By printedDressMoreButton = By.xpath("//div[@id=\"center_column\"]//span[text()='More']");
+    private By addToCartButton = By.xpath("//*[@id=\"add_to_cart\"]/button/span");
+    private By continueShoppingButton = By.xpath("//*[@id=\"layer_cart\"]//span[@title=\"Continue shopping\"]/span");
     private By cartButton = By.xpath("//a[@title=\"View my shopping cart\"]");
     private By checkoutButton = By.xpath("//a[@id=\"button_order_cart\"]/span");
 
@@ -48,4 +50,37 @@ public class MainPage {
         driver.findElement(By.xpath(itemNumberToDeleteInCheckout)).click();
         return new MainPage(driver);
     }
+
+    public MainPage selectDressSize(String size) {
+
+        driver.findElement(By.xpath("//*[@id=\"group_1\"]")).click();
+
+        if (size == "S") {
+            driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[1]")).click();
+        } else if (size == "M") {
+            driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[2]")).click();
+        } else if (size == "L") {
+            driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[3]")).click();
+        }
+
+        return new MainPage(driver);
+    }
+
+    public MainPage selectDressColor(String color) {
+
+        if (color == "Beige") {
+            driver.findElement(By.xpath("//a[@name=\"Beige\"]")).click();
+        } else if (color == "Pink") {
+            driver.findElement(By.xpath("//a[@name=\"Pink\"]")).click();
+        }
+
+        return new MainPage(driver);
+    }
+
+    public MainPage clickAddToCartButtonAndContinueShopping() {
+        driver.findElement(addToCartButton).click();
+        driver.findElement(continueShoppingButton).click();
+        return new MainPage(driver);
+    }
+
 }
