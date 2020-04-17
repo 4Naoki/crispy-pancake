@@ -55,11 +55,11 @@ public class MainPage {
 
         driver.findElement(By.xpath("//*[@id=\"group_1\"]")).click();
 
-        if (size == "S") {
+        if (size.equalsIgnoreCase("S")) {
             driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[1]")).click();
-        } else if (size == "M") {
+        } else if (size.equalsIgnoreCase("M")) {
             driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[2]")).click();
-        } else if (size == "L") {
+        } else if (size.equalsIgnoreCase("L")) {
             driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[3]")).click();
         }
 
@@ -68,9 +68,9 @@ public class MainPage {
 
     public MainPage selectDressColor(String color) {
 
-        if (color == "Beige") {
+        if (color.equalsIgnoreCase("Beige")) {
             driver.findElement(By.xpath("//a[@name=\"Beige\"]")).click();
-        } else if (color == "Pink") {
+        } else if (color.equalsIgnoreCase("Pink")) {
             driver.findElement(By.xpath("//a[@name=\"Pink\"]")).click();
         }
 
