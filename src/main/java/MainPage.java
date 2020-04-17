@@ -83,4 +83,15 @@ public class MainPage {
         return new MainPage(driver);
     }
 
+    public String getCartText() {
+        return driver.findElement(By.xpath("//span[@class=\"ajax_cart_quantity unvisible\"]")).getText();
+    }
+
+    public String getNotificationText() {
+        return driver.findElement(By.xpath("//div[@id=\"center_column\"]/p")).getAttribute("innerText");
+    }
+
+    public String getCartMessage() {
+        return driver.findElement(By.xpath("//a[@title=\"View my shopping cart\"]//span[text()=\"(empty)\"]")).getAttribute("innerText");
+    }
 }

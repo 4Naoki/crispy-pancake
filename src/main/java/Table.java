@@ -11,8 +11,8 @@ public class Table {
     private WebElement tableElement;
     private WebDriver driver;
 
-    public Table(WebElement tableElement, WebDriver driver) {
-        this.tableElement = tableElement;
+    public Table(By tableElement, WebDriver driver) {
+        this.tableElement = driver.findElement(tableElement);
         this.driver = driver;
     }
 

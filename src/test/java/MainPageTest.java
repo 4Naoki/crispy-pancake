@@ -29,16 +29,14 @@ public class MainPageTest {
     public void checkScenarioOne() {
         mainPage.clickOnDressesThroughHover("Evening");
         mainPage.getPrintedDressInformation();
-        WebElement tableElement = driver.findElement(By.xpath("//table[@class='table-data-sheet']"));
-        Table table = new Table(tableElement, driver);
+        Table table = new Table(By.xpath("//table[@class='table-data-sheet']"), driver);
 
-        String Compositions = table.getValueFromCellFromTableWithoutHeadings(1,2);
-        String Styles = table.getValueFromCellFromTableWithoutHeadings(2,2);
-        String Properties = table.getValueFromCellFromTableWithoutHeadings(3,2);
-
-        Assert.assertEquals("Viscose", Compositions);
-        Assert.assertEquals("Dressy", Styles);
-        Assert.assertEquals("Short Dress", Properties);
+        Assert.assertEquals("Viscose",
+                table.getValueFromCellFromTableWithoutHeadings(1,2));
+        Assert.assertEquals("Dressy",
+                table.getValueFromCellFromTableWithoutHeadings(2,2));
+        Assert.assertEquals("Short Dress",
+                table.getValueFromCellFromTableWithoutHeadings(3,2));
     }
 
     @Test
@@ -49,9 +47,7 @@ public class MainPageTest {
         mainPage.selectDressColor("Pink");
         mainPage.clickAddToCartButtonAndContinueShopping();
 
-        String Quantity = driver.findElement(By.xpath("//span[@class=\"ajax_cart_quantity unvisible\"]")).getText();
-
-        Assert.assertEquals("1", Quantity);
+        Assert.assertEquals("1", mainPage.getCartText());
     }
 
     @Test
@@ -64,11 +60,8 @@ public class MainPageTest {
         mainPage.openCheckout();
         mainPage.deleteItemFromCheckout("1");
 
-        String Notification = driver.findElement(By.xpath("//div[@id=\"center_column\"]/p")).getAttribute("innerText");
-        String cartMessage = driver.findElement(By.xpath("//a[@title=\"View my shopping cart\"]//span[text()=\"(empty)\"]")).getAttribute("innerText");
-
-        Assert.assertEquals("Your shopping cart is empty.", Notification);
-        Assert.assertEquals("(empty)", cartMessage);
+        Assert.assertEquals("Your shopping cart is empty.", mainPage.getNotificationText());
+        Assert.assertEquals("(empty)", mainPage.getCartMessage());
     }
 
     @After
