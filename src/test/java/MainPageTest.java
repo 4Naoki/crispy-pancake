@@ -1,12 +1,10 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +13,7 @@ public class MainPageTest {
     private WebDriver driver;
     private MainPage mainPage;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "/Users/nikita/IdeaProjects/testselenium/drivers/chromedriver");
         driver = new ChromeDriver();
@@ -31,11 +29,11 @@ public class MainPageTest {
         mainPage.getPrintedDressInformation();
         Table table = new Table(By.xpath("//table[@class='table-data-sheet']"), driver);
 
-        Assert.assertEquals("Viscose",
+        Assertions.assertEquals("Viscose",
                 table.getValueFromCellFromTableWithoutHeadings(1,2));
-        Assert.assertEquals("Dressy",
+        Assertions.assertEquals("Dressy",
                 table.getValueFromCellFromTableWithoutHeadings(2,2));
-        Assert.assertEquals("Short Dress",
+        Assertions.assertEquals("Short Dress",
                 table.getValueFromCellFromTableWithoutHeadings(3,2));
     }
 
@@ -47,7 +45,7 @@ public class MainPageTest {
         mainPage.selectDressColor("Pink");
         mainPage.clickAddToCartButtonAndContinueShopping();
 
-        Assert.assertEquals("1", mainPage.getCartText());
+        Assertions.assertEquals("1", mainPage.getCartText());
     }
 
     @Test
@@ -60,11 +58,11 @@ public class MainPageTest {
         mainPage.openCheckout();
         mainPage.deleteItemFromCheckout("1");
 
-        Assert.assertEquals("Your shopping cart is empty.", mainPage.getNotificationText());
-        Assert.assertEquals("(empty)", mainPage.getCartMessage());
+        Assertions.assertEquals("Your shopping cart is empty.", mainPage.getNotificationText());
+        Assertions.assertEquals("(empty)", mainPage.getCartMessage());
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         driver.quit();
     }
