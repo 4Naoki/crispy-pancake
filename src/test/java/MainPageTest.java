@@ -24,7 +24,7 @@ public class MainPageTest {
     }
 
     @Test
-    public void checkScenarioOne() {
+    public void checkScenarioOneTest() {
         mainPage.clickOnDressesThroughHover("Evening");
         mainPage.getPrintedDressInformation();
         Table table = new Table(By.xpath("//table[@class='table-data-sheet']"), driver);
@@ -38,7 +38,7 @@ public class MainPageTest {
     }
 
     @Test
-    public void checkScenarioTwo() {
+    public void checkScenarioTwoTest() {
         mainPage.clickOnDressesThroughHover("Evening");
         mainPage.getPrintedDressInformation();
         mainPage.selectDressSize("M");
@@ -49,7 +49,7 @@ public class MainPageTest {
     }
 
     @Test
-    public void checkScenarioThree() {
+    public void checkScenarioThreeTest() {
         mainPage.clickOnDressesThroughHover("Evening");
         mainPage.getPrintedDressInformation();
         mainPage.selectDressSize("M");
